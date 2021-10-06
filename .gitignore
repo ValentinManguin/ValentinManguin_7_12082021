@@ -1,4 +1,5 @@
 .DS_Store
+*/node_modules/*
 node_modules
 /dist
 
@@ -21,3 +22,4 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+frontend/src/assets/Groupomania_Logos+(3).zip

@@ -40,7 +40,7 @@ exports.login = async(req, res, next) => {
             userId:     user.id,
             role:       user.isAdmin,
             userName :  user.userName,
-            token: jwt.sign( { userId: user.id, role: user.isAdmin }, /* process.env.TKN_SECRET */"secret", { expiresIn: '24h' } )
+            token: jwt.sign( { userId: user.id, role: user.isAdmin }, process.env.TKN_SECRET , { expiresIn: '24h' } )
           })
         })
         .catch(error => res.status(500).json({ error: error.message }));                             

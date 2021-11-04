@@ -5,10 +5,9 @@
            
     <form v-on:submit.prevent="signup" id="signup">
         <h2>Inscription</h2>
-                <label for="lastname">Nom :</label>
-                <input type="text" id="lastname" name="lastname" v-model="inputSignup.lastname" required>
+                
 
-                <label for="firstname">Prénom :</label>
+                <label for="firstname">Username :</label>
                 <input type="text" id="firstname" name="firstname" v-model="inputSignup.firstname" required>
 
                 <label for="email">E-mail :</label>
@@ -36,7 +35,7 @@ export default {
     data() {
         return {
             inputSignup: {
-                lastname: "",
+                
                 firstname: "",
                 email: "",
                 password: ""
@@ -46,8 +45,8 @@ export default {
  methods: {
         signup() {
             let inputDatas = {
-                "lastname": this.inputSignup.lastname,
-                "firstname": this.inputSignup.firstname,
+                
+                "username": this.inputSignup.firstname,
                 "email": this.inputSignup.email,
                 "password": this.inputSignup.password
             }
@@ -84,6 +83,10 @@ export default {
 
 <style lang="css">
 
+.signup {
+    margin-top: -100px;
+}
+
 form {
 
     display: flex;
@@ -104,7 +107,13 @@ img {
     height: 300px;
 }
 
-
+button {
+    margin: auto;
+    border-radius: 0.5rem;
+    border: 3px solid black;
+    background-color: white;
+    
+}
 
 
 </style>

@@ -3,6 +3,7 @@ const path = require('path');
 
 
 const userRoutes = require('./routes/user');
+const postRoutes = require('./routes/post');
 const db = require("./middleware/db-config");
 const dbassoc = require("./models/db_association");
 
@@ -30,6 +31,7 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 app.use('/api/users', userRoutes);
+app.use('/api/post', postRoutes);
 
 
 

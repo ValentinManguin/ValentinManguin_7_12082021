@@ -3,7 +3,7 @@ const jwt = require('jsonwebtoken');
 module.exports = (req, res, next) => {    // Exportation d'un middleware 
     try {
         console.log(req.headers)
-        const token = req.headers.authorization.split(' ')[1]; // Récupération du token et on retourne le 2ème élément //
+        const token = req.headers.authorization; // Récupération du token et on retourne le 2ème élément //
         console.log(token)
         const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET'); // décodage du token, la clé doit correspondre à celle de la fontion login //
         console.log(decodedToken)

@@ -13,5 +13,9 @@ module.exports = db.define('User', {
     password: {
         type: DataTypes.STRING(100),
         allowNull: false
+    },
+    username: {
+        type: DataTypes.STRING(20),
+        allowNull: false
     }
 });

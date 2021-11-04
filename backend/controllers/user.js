@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const User = require('../models/user');
+const dotenv = require("dotenv");
+dotenv.config({ path: './.env' });
 
 exports.signup = async(req, res, next) => {
     console.log(req.body)
@@ -8,7 +10,8 @@ exports.signup = async(req, res, next) => {
         .then(hash => {
             const user = User.build({
                 email: req.body.email,
-                password: hash
+                password: hash,
+                username: req.body.username
             });
             user.save()
                 .then(() => res.status(201).json({ message: 'Utilisateur créé !' }))
@@ -40,7 +43,7 @@ exports.login = async(req, res, next) => {
             userId:     user.id,
             role:       user.isAdmin,
             userName :  user.userName,
-            token: jwt.sign( { userId: user.id, role: user.isAdmin }, process.env.TKN_SECRET , { expiresIn: '24h' } )
+            token: jwt.sign( { userId: user.id, role: user.isAdmin }, "RANDOM_TOKEN_SECRET" , { expiresIn: '24h' } )
           })
         })
         .catch(error => res.status(500).json({ error: error.message }));                             

@@ -63,10 +63,11 @@ export default {
           password: this.inputPassword,
         })
         .then(function (response) {
+          console.log(response.data);
           localStorage.setItem("token", response.data.token);
           localStorage.setItem("userId", response.data.userId);
           localStorage.setItem("userName", response.data.userName);
-          localStorage.setItem("role", response.data.role);
+          localStorage.setItem("isAdmin", response.data.isAdmin);
           window.alert(
             "connexion réussie, redirection vers la page principale"
           );

@@ -7,10 +7,10 @@ const User = require('../models/user')
 exports.createPost = (req, res, next) => {
   const userId = req.decodedToken.userId;
   const post = Post.build({
-    userId: userId,
+  UserId: userId,
 
     content: req.body.content,
-    imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+   // imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
   });
   post.save()
     .then(() => {
@@ -86,4 +86,4 @@ exports.getAllPost = (req, res, _) => {
 
 
 
-    // Liker ou disliker un post
+  

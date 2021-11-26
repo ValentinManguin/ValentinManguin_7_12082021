@@ -17,5 +17,10 @@ module.exports = db.define('User', {
     username: {
         type: DataTypes.STRING(20),
         allowNull: false
+    },
+    isAdmin :{
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
     }
 });

@@ -2,12 +2,16 @@
   <div class="home">
     <nav>
       <img src="../assets/icon-left-font.svg" alt="" />
-      <p>
+      <button> <h3>
         <router-link class="redirection-home" to="/profil">
           Profil
-        </router-link>
-      </p>
-      <p>Se déconnecter</p>
+        </router-link></h3>
+      </button>
+   <button v-on:click="disconnect"> <h3>
+    
+     Se déconnecter
+</h3>
+     </button>
     </nav>
     <div class="container site">
       <div class="message">
@@ -22,12 +26,16 @@
         ></textarea>
         <button v-on:click="createPost">Envoyer</button>
       </div>
+<div v-if="this.isAdmin=='true'">
+  je suis admin
 
+</div>
       <div v-for="post in posts" :key="post.id" class="affichage">
-        {{ post.content }}
+           {{post.User.username}} : {{ post.content }}
       </div>
     </div>
   </div>
+  
 </template>
 
 
@@ -38,6 +46,7 @@
 
 
 <script>
+import router from "../router";
 const axios = require("axios");
 
 export default {
@@ -47,6 +56,7 @@ export default {
     return {
       posts: [],
       content: "",
+      isAdmin: "false", userId:0
     };
   },
   methods: {
@@ -66,16 +76,41 @@ export default {
         .post("http://localhost:3000/api/post", { content: this.content })
         .then(() => {
           this.content = "";
+          this.getAllPost();
         })
         .catch((error) => {
           console.log(error);
         });
     },
+
+    deletePost() {
+       axios
+       .delete("http://localhost:3000/api/post")
+ 
+ 
+ .catch((error) => {
+          console.log(error);
+        });
+},
+
+    disconnect() {
+localStorage.clear();
+router.push({ path: "Login" });
+ }
   },
   mounted() {
+    let token = localStorage.getItem('token');
+    if(token==null)
+    {
+     this.disconnect();
+     return;
+    }
     console.log("coucou home");
+    this.isAdmin=localStorage.getItem('isAdmin');
+    this.userId=localStorage.getItem('userId');
     this.getAllPost();
   },
+ 
 };
 </script>
 

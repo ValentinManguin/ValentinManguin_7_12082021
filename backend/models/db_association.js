@@ -3,4 +3,4 @@ const Post = require("../models/post");
 
 
 Post.belongsTo(User);
-User.hasMany(Post);
+User.hasMany(Post, {foreignKey:{allowNull:false}});

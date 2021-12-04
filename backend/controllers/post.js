@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken');
 const fs = require('fs');
 const Post = require('../models/post');
-const User = require('../models/user')
+const User = require('../models/user');
+
 // créer un post
 
 exports.createPost = (req, res, next) => {
@@ -39,16 +40,16 @@ exports.modifyPost = (req, res, _) => {
 // supprimer un post
 
 exports.deletePost = (req, res, _) => {
-  Post.findOne({ _id: req.params.id })
+  Post.findOne({where :{ id: req.params.id }})
     .then((post) => {
       console.log(post.userId);
       console.log(req.currentUserId);
       if (post.userId !== req.currentUserId) {
         res.status(401).json({ message: "action non autorisée" });  // si les id ne sont pas les même renvoie erreur 401
-        return sauce;
+        return ;
       }
 
-      Post.deleteOne({ _id: req.params.id })
+      Post.destroy({where :{ id: req.params.id }})
         .then(() => res.status(200).json({ message: 'post supprimée.' }))
         .catch(error => res.status(400).json({ error }));
     })

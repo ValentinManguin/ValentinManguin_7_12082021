@@ -7,11 +7,14 @@ const User = require('../models/user');
 
 exports.createPost = (req, res, next) => {
   const userId = req.decodedToken.userId;
+
+  
   const post = Post.build({
   UserId: userId,
 
     content: req.body.content,
    // imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+
   });
   post.save()
     .then(() => {
@@ -63,13 +66,12 @@ exports.deletePost = (req, res, _) => {
 // accéder à un post
 
 exports.getOnePost = (req, res, _) => {
-  Post.findOne({ _id: req.params.id })
+  Post.findOne({ include : {model: User, attributes: ['username']}, where: { id: req.params.id }})
     .then((post) => { res.status(200).json(post); })
     .catch((error) => {
       res.status(404).json({ error });
     });
 };
-
 
 
 

@@ -4,6 +4,7 @@ const path = require('path');
 
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
+const commentRoutes = require('./routes/comment');
 const db = require("./middleware/db-config");
 const dbassoc = require("./models/db_association");
 
@@ -30,9 +31,11 @@ app.use((req, res, next) => {
 
 app.use(express.json());
 
+app.use('/images', express.static(path.join(__dirname, 'images')));
+
 app.use('/api/users', userRoutes);
 app.use('/api/post', postRoutes);
-
+app.use('/api/comment', commentRoutes);
 
 
 module.exports = app;

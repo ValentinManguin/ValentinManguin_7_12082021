@@ -27,7 +27,7 @@ const routes = [
   component: () => import("../views/Profil.vue")  
 },
 {
-  path: "/comment",                                               
+  path: "/comment/:postid",                                               
   name: "Comment",                                 
   component: () => import("../views/Comment.vue")  
 },

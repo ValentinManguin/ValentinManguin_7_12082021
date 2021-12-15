@@ -29,6 +29,7 @@
       <h3>  {{ post.User.username }} :  </h3>  
         {{ post.content }}
         <button v-on:click="deletePost(post.id)" v-if="isAdmin == 'true' || userId==post.UserId">Supprimer</button>
+    <router-link :to="'/comment/'+ post.id">   Commenter cette publication</router-link> 
       </div>
     </div>
   </div>

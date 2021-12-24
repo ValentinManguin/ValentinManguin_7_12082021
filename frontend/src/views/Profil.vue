@@ -2,9 +2,9 @@
   <div>
     <nav>
       <img src="../assets/icon-left-font.svg" alt="" />
-      <h3>
+      <h2>
         <router-link class="redirection-profil" to="/home"> Home </router-link>
-      </h3>
+      </h2>
     </nav>
 
     <div class="profil">
@@ -87,6 +87,9 @@ nav {
   padding: 0 25px;
 }
 
+.redirection-profil {
+    text-decoration: none;
+}
 img {
   height: 350px;
 }

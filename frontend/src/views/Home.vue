@@ -3,33 +3,35 @@
     <nav>
       <img src="../assets/icon-left-font.svg" alt="" />
       <button>
-        <h3>
+        <h2>
           <router-link class="redirection-home" to="/profil">
             Profil
           </router-link>
-        </h3>
+        </h2>
       </button>
-      <button v-on:click="disconnect"><h3>Se déconnecter</h3></button>
+      <button v-on:click="disconnect"><h2>Se déconnecter</h2></button>
     </nav>
     <div class="container site">
       <div class="message">
-        <h2>Exprimez-vous !</h2>
+        <h1>Exprimez-vous !</h1>
         <textarea
           name="content"
           id="content"
           cols="30"
           rows="10"
+          placeholder="Vous pouvez écrire ici."
           v-model="content"
           required
         ></textarea>
+        <input type="file" accept="image/*" @change="imageChoisis">
         <button v-on:click="createPost">Envoyer</button>
       </div>
-      <div v-if="this.isAdmin == 'true'">je suis admin</div>
+     
       <div v-for="post in posts" :key="post.id" class="affichage">
       <h3>  {{ post.User.username }} :  </h3>  
-        {{ post.content }}
-        <button v-on:click="deletePost(post.id)" v-if="isAdmin == 'true' || userId==post.UserId">Supprimer</button>
-    <router-link :to="'/comment/'+ post.id">   Commenter cette publication</router-link> 
+        {{ post.content }} <img v-if="post.imageUrl  " :src="post.imageUrl" alt="">
+        <button v-on:click="deletePost(post.id)" v-if="isAdmin == 'true' || userId==post.UserId" class="suppr">Supprimer</button>
+    <router-link class="redirection-comment" :to="'/comment/'+ post.id">   Commenter cette publication</router-link> 
       </div>
     </div>
   </div>
@@ -53,6 +55,7 @@ export default {
     return {
       posts: [],
       content: "",
+      imageFile:"",
       isAdmin: "false",
       userId: 0,
     };
@@ -70,8 +73,11 @@ export default {
         });
     },
     createPost() {
+      let data =new FormData();
+      data.append('content',this.content);
+      data.append('inputFile',this.imageFile);
       axios
-        .post("http://localhost:3000/api/post", { content: this.content })
+        .post("http://localhost:3000/api/post",data)
         .then(() => {
           this.content = "";
           this.getAllPost();
@@ -92,6 +98,13 @@ export default {
         .catch((error) => {
           console.log(error);
         });
+    },
+    imageChoisis(event) {
+      const fileReader = new FileReader();
+      fileReader.addEventListener('load',()=>{
+        this.imageFile = fileReader.result;
+      });
+      fileReader.readAsDataURL(event.target.files[0]);
     },
 
     disconnect() {
@@ -134,11 +147,21 @@ img {
   height: 350px;
 }
 
+.redirection-home{
+  text-decoration: none;
+}
+
+.redirection-comment{
+  text-decoration: none;
+}
+
 textarea {
   border-radius: 0.5rem;
   border: solid;
   width: 40%;
   height: 70px;
+  margin-bottom: 10px;
+  margin-top: 20px;
 }
 
 .message {
@@ -164,6 +187,18 @@ button {
   align-items: center;
 
 }
+
+h3 {
+  border: solid;
+  border-radius: 1.5rem;
+  margin-bottom: 30px;
+  width: 150px;
+
+
+}
+
+
+
 </style>
 
 

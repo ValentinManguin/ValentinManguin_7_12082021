@@ -23,15 +23,24 @@
           v-model="content"
           required
         ></textarea>
-        <input type="file" accept="image/*" @change="imageChoisis">
+        <input type="file" accept="image/*" @change="imageChoisi" />
         <button v-on:click="createPost">Envoyer</button>
       </div>
-     
+
       <div v-for="post in posts" :key="post.id" class="affichage">
-      <h3>  {{ post.User.username }} :  </h3>  
-        {{ post.content }} <img v-if="post.imageUrl  " :src="post.imageUrl" alt="">
-        <button v-on:click="deletePost(post.id)" v-if="isAdmin == 'true' || userId==post.UserId" class="suppr">Supprimer</button>
-    <router-link class="redirection-comment" :to="'/comment/'+ post.id">   Commenter cette publication</router-link> 
+        <h3>{{ post.User.username }} :</h3>
+        {{ post.content }}
+        <img v-if="post.imageUrl" :src="post.imageUrl" alt="" />
+        <button
+          v-on:click="deletePost(post.id)"
+          v-if="isAdmin == 'true' || userId == post.UserId"
+          class="suppr"
+        >
+          Supprimer
+        </button>
+        <router-link class="redirection-comment" :to="'/comment/' + post.id">
+          Commenter cette publication</router-link
+        >
       </div>
     </div>
   </div>
@@ -55,7 +64,7 @@ export default {
     return {
       posts: [],
       content: "",
-      imageFile:"",
+      imageFile: "",
       isAdmin: "false",
       userId: 0,
     };
@@ -73,11 +82,11 @@ export default {
         });
     },
     createPost() {
-      let data =new FormData();
-      data.append('content',this.content);
-      data.append('inputFile',this.imageFile);
+      let data = new FormData();
+      data.append("content", this.content);
+      data.append("inputFile", this.imageFile);
       axios
-        .post("http://localhost:3000/api/post",data)
+        .post("http://localhost:3000/api/post", data)
         .then(() => {
           this.content = "";
           this.getAllPost();
@@ -89,7 +98,7 @@ export default {
 
     deletePost(postId) {
       axios
-        .delete("http://localhost:3000/api/post/" + postId )
+        .delete("http://localhost:3000/api/post/" + postId)
         .then((response) => {
           console.log(response);
           this.getAllPost();
@@ -99,12 +108,8 @@ export default {
           console.log(error);
         });
     },
-    imageChoisis(event) {
-      const fileReader = new FileReader();
-      fileReader.addEventListener('load',()=>{
-        this.imageFile = fileReader.result;
-      });
-      fileReader.readAsDataURL(event.target.files[0]);
+    imageChoisi(event) {
+      this.imageFile = event.target.files[0];
     },
 
     disconnect() {
@@ -147,11 +152,11 @@ img {
   height: 350px;
 }
 
-.redirection-home{
+.redirection-home {
   text-decoration: none;
 }
 
-.redirection-comment{
+.redirection-comment {
   text-decoration: none;
 }
 
@@ -185,7 +190,6 @@ button {
   display: flex;
   flex-flow: column;
   align-items: center;
-
 }
 
 h3 {
@@ -193,12 +197,7 @@ h3 {
   border-radius: 1.5rem;
   margin-bottom: 30px;
   width: 150px;
-
-
 }
-
-
-
 </style>
 
 

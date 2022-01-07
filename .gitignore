@@ -23,3 +23,4 @@ pnpm-debug.log*
 *.sln
 *.sw?
 frontend/src/assets/Groupomania_Logos+(3).zip
+backend/.env

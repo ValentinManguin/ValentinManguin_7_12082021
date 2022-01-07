@@ -1,6 +1,6 @@
 <template>
   <div class="login">
-    <img src="../assets/icon-above-font.svg" alt="" />
+    <img src="../assets/icon-left-font-monochrome-black.png" alt="" />
 
     <form v-on:submit.prevent="login" id="login">
       <h2>Connexion</h2>
@@ -29,6 +29,7 @@
         >Enregistrez-vous</router-link
       >
     </p>
+    
   </div>
 </template>
 
@@ -93,8 +94,13 @@ export default {
 
 <style>
 
+body {
+  background-color: whitesmoke;
+}
+
+
 .login {
-  margin-top: -100px;
+  margin-top: -50px;
 }
 
 form {

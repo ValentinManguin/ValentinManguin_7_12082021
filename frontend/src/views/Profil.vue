@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav>
-      <img src="../assets/icon-left-font.svg" alt="" />
+      <img src="../assets/icon-left-font-monochrome-black.png" alt="" />
       <h2>
         <router-link class="redirection-profil" to="/home"> Home </router-link>
       </h2>
@@ -14,13 +14,19 @@
         <h2>Bonjour {{ this.User.username }}</h2>
         <h2>email: {{ this.User.email }}</h2>
 
-        <button v-on:click="deleteAccount">Supprimer votre compte</button>
+        <button class="suppr-compte" v-on:click="deleteAccount">
+          Supprimer votre compte
+        </button>
       </div>
     </div>
+    <footer class="footprof">
+      <img
+        class="imgfooter"
+        src="../assets/icon-left-font-monochrome-black.png"
+        alt=""
+      />
+    </footer>
   </div>
-
-
-
 </template>
 
 
@@ -79,16 +85,29 @@ export default {
 
 
 <style>
+
+body {
+  background-color: whitesmoke;
+}
+
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: -210px;
+  margin-top: -68px;
+  height: 100px;
   padding: 0 25px;
+  background-color: lightgrey;
 }
 
 .redirection-profil {
-    text-decoration: none;
+  text-decoration: none;
+  
+}
+h1 {
+  background-color: linen;
+  width: 20%;
+  border: solid antiquewhite;
 }
 img {
   height: 350px;
@@ -104,20 +123,30 @@ img {
 }
 
 .profil {
-
-display: flex;
-flex-flow: column;
-align-items: center;
-
-
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin-top: 100px;
+  margin-bottom: -99px;
 }
 
-
 button {
-    margin: auto;
-    border-radius: 0.5rem;
-    border: 3px solid black;
-    background-color: white;
-    
+  margin: auto;
+  border-radius: 0.5rem;
+  border: 3px solid black;
+  background-color: white;
+}
+
+.suppr-compte {
+  margin-bottom: 30px;
+}
+
+.footprof {
+  background-color: lightgrey;
+  margin-top: 368px;
+}
+
+.imgfooter {
+  height: 200px;
 }
 </style>

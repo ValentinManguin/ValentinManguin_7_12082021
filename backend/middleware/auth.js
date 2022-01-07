@@ -5,7 +5,7 @@ module.exports = (req, res, next) => {    // Exportation d'un middleware
         console.log(req.headers)
         const token = req.headers.authorization; // Récupération du token et on retourne le 2ème élément //
         console.log(token)
-        const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET'); // décodage du token, la clé doit correspondre à celle de la fontion login //
+        const decodedToken = jwt.verify(token, process.env.jwt_secret); // décodage du token, la clé doit correspondre à celle de la fontion login //
         console.log(decodedToken)
         const userId = decodedToken.userId; // On récupére l'userId //
         console.log(userId);

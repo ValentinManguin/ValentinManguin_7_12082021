@@ -1,7 +1,7 @@
 <template>
     
 <div class="signup">
-    <img src="../assets/icon-above-font.svg" alt="">
+    <img src="../assets/icon-left-font-monochrome-black.png" alt="">
            
     <form v-on:submit.prevent="signup" id="signup">
         <h2>Inscription</h2>
@@ -83,8 +83,13 @@ export default {
 
 <style lang="css">
 
+body {
+  background-color: whitesmoke;
+}
+
+
 .signup {
-    margin-top: -100px;
+    margin-top: -50px;
 }
 
 form {

@@ -90,7 +90,7 @@ exports.getOnePost = (req, res, _) => {
 // accéder à tous les posts
 
 exports.getAllPost = (req, res, _) => {
-  Post.findAll({ include: { model: User, attributes: ['username'] } })
+  Post.findAll({ order:[['id','DESC']],include: { model: User, attributes: ['username'] } })
     .then((posts) => { res.status(200).json(posts); })
     .catch((error) => {
       res.status(400).json({ error });

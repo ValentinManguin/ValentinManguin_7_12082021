@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-
+const dotenv = require("dotenv").config();
 
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
@@ -12,12 +12,13 @@ const dbassoc = require("./models/db_association");
 db.authenticate()
     .then(() => {
         console.log('Connection à la BDD réussie !');
+        db.sync({ alter: true });
     })
     .catch((error) => {
         console.error('Impossible de se connecter à la BDD', error);
     });
 
-db.sync({ alter: true });
+
 
 const app = express();
 

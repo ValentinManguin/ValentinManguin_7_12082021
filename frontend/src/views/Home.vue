@@ -1,17 +1,19 @@
 <template>
   <div class="home">
     <nav>
-      <img src="../assets/icon-left-font.svg" alt="" />
-      <button>
+      <img src="../assets/icon-left-font-monochrome-black.png" alt="" />
+      <button class="profil-button">
         <h2>
           <router-link class="redirection-home" to="/profil">
             Profil
           </router-link>
         </h2>
       </button>
-      <button v-on:click="disconnect"><h2>Se déconnecter</h2></button>
+      <button class="discon" v-on:click="disconnect">
+        <h2>Se déconnecter</h2>
+      </button>
     </nav>
-    <div class="container site">
+    <div class="container-site">
       <div class="message">
         <h1>Exprimez-vous !</h1>
         <textarea
@@ -24,7 +26,7 @@
           required
         ></textarea>
         <input type="file" accept="image/*" @change="imageChoisi" />
-        <button v-on:click="createPost">Envoyer</button>
+        <button class="envoyer" v-on:click="createPost">Envoyer</button>
       </div>
 
       <div v-for="post in posts" :key="post.id" class="affichage">
@@ -43,6 +45,10 @@
         >
       </div>
     </div>
+    <footer>
+<img class="imgfooter" src="../assets/icon-left-font-monochrome-black.png" alt="" />
+
+    </footer>
   </div>
 </template>
 
@@ -140,12 +146,20 @@ export default {
 
 
 <style>
+
+body {
+  background-color: whitesmoke;
+}
+
+
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: -210px;
+  margin-top: -68px;
+  height: 100px;
   padding: 0 25px;
+  background-color: lightgrey;
 }
 
 img {
@@ -156,8 +170,15 @@ img {
   text-decoration: none;
 }
 
+
+.container-site {
+  background-color: whitesmoke;
+}
+
 .redirection-comment {
   text-decoration: none;
+  border-radius: 0.5 rem;
+  border: solid 3 px black;
 }
 
 textarea {
@@ -186,18 +207,86 @@ button {
 .affichage {
   border: solid;
   border-radius: 3px;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
   display: flex;
   flex-flow: column;
   align-items: center;
+  width: 1500px;
+  margin-left: 190px;
+  background-color: white;
+}
+
+
+h1 {
+  background-color: linen;
+  width: 20%;
+  border: solid antiquewhite;
 }
 
 h3 {
-  border: solid;
   border-radius: 1.5rem;
   margin-bottom: 30px;
   width: 150px;
+  background-color: lightgrey;
 }
+
+.envoyer {
+  margin: 15px;
+}
+
+.suppr {
+  margin: 15px;
+}
+
+footer {
+  background-color: lightgrey;
+  margin-top: 150px;
+}
+
+.imgfooter {
+  height: 200px;
+}
+
+
+@media screen and (max-width: 1700px) {
+
+.affichage{
+  width: 80%;
+}
+
+}
+
+@media screen and (max-width: 971px) {
+
+  body {
+    width: 98%;
+  }
+
+  .affichage {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 607px) {
+
+nav {
+  width: 90%;
+}
+img {
+  width: 40%;
+}
+}
+
+@media screen and (max-width: 430px) {
+
+  .affichage {
+    margin-right: 60px;
+  }
+}
+
+
+
+
 </style>
 
 

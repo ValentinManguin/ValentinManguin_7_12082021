@@ -1,39 +1,50 @@
 <template>
   <div>
     <nav>
-      <img src="../assets/icon-left-font.svg" alt="" />
+      <img src="../assets/icon-left-font-monochrome-black.png" alt="" />
+
       <h2>
         <router-link class="redirection-comment" to="/home"> Home </router-link>
       </h2>
     </nav>
+    <div class="répondre"><h1>Répondre à un post !</h1></div>
+    <div class="container-site-comm">
+      <div class="affichage">
+        <div v-for="post in posts" :key="post.id">
+          <h3>{{ post.User.username }} :</h3>
+          {{ post.content }}
+        </div>
+        <textarea
+          name="content"
+          id="content"
+          cols="30"
+          rows="10"
+          placeholder="Vous pouvez écrire ici."
+          v-model="content"
+          required
+        ></textarea>
+        <button class="envoyer" v-on:click="createComment">Envoyer</button>
 
-    <div class="affichage">
-      <div v-for="post in posts" :key="post.id">
-        <h3>{{ post.User.username }} :</h3>
-        {{ post.content }}
-      </div>
-      <textarea
-        name="content"
-        id="content"
-        cols="30"
-        rows="10"
-        placeholder="Vous pouvez écrire ici."
-        v-model="content"
-        required
-      ></textarea>
-      <button v-on:click="createComment">Envoyer</button>
-
-      <div v-for="comment in comments" :key="comment.id" class="comment">
-        <h3>{{ comment.User.username }} :</h3>
-        {{ comment.content }}
-        <button
-          v-on:click="deleteComment(comment.id)"
-          v-if="isAdmin == 'true' || userId == comment.UserId"
-        >
-          Supprimer
-        </button>
+        <div v-for="comment in comments" :key="comment.id" class="comment">
+          <h3>{{ comment.User.username }} :</h3>
+          {{ comment.content }}
+          <button
+            v-on:click="deleteComment(comment.id)"
+            v-if="isAdmin == 'true' || userId == comment.UserId"
+            class="suppr"
+          >
+            Supprimer
+          </button>
+        </div>
       </div>
     </div>
+    <footer class="commfoot">
+      <img
+        class="imgfooter"
+        src="../assets/icon-left-font-monochrome-black.png"
+        alt=""
+      />
+    </footer>
   </div>
 </template>
 
@@ -116,12 +127,44 @@ export default {
 
 
 <style>
+body {
+  background-color: whitesmoke;
+}
+
+img {
+  height: 350px;
+}
+
+.redirection-comment {
+  text-decoration: none;
+}
+.répondre {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+h1 {
+  background-color: linen;
+  width: 20%;
+  border: solid antiquewhite;
+}
+
+h3 {
+  border-radius: 1.5rem;
+  margin-bottom: 30px;
+  width: 150px;
+  background-color: lightgrey;
+}
+
 nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: -210px;
+  margin-top: -68px;
+  height: 100px;
   padding: 0 25px;
+  background-color: lightgrey;
 }
 
 button {
@@ -131,13 +174,20 @@ button {
   background-color: white;
 }
 
+.container-site-comm {
+  margin-top: 100px;
+}
+
 .affichage {
   border: solid;
   border-radius: 3px;
-  margin-bottom: 30px;
+  margin-bottom: 60px;
   display: flex;
   flex-flow: column;
   align-items: center;
+  width: 1500px;
+  margin-left: 190px;
+  background-color: white;
 }
 
 .comment {
@@ -158,5 +208,21 @@ textarea {
   height: 70px;
   margin-bottom: 10px;
   margin-top: 20px;
+}
+
+.envoyer {
+  margin: 15px;
+}
+
+.suppr {
+  margin: 15px;
+}
+.commfoot {
+  background-color: lightgrey;
+  margin-top: 400px;
+}
+
+.imgfooter {
+  height: 200px;
 }
 </style>

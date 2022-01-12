@@ -139,6 +139,7 @@ img {
 
 .redirection-comment {
   text-decoration: none;
+  
 }
 .répondre {
   display: flex;

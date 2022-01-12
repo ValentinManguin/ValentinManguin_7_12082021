@@ -181,8 +181,8 @@ img {
 
 .redirection-comment {
   text-decoration: none;
-  border-radius: 0.5 rem;
-  border: solid 3 px black;
+  
+  
 }
 
 textarea {

@@ -262,9 +262,10 @@ footer {
 
 @media screen and (max-width: 1024px) {
 
-  img {
-    width: 50%;
-  }
+ .img1 {
+  width: 40%;
+}
+
 
   h1 {
   width: 30%;
@@ -279,16 +280,21 @@ footer {
     width: 98%;
   }
 
-  img {
-    width: 62%;
-  }
+
 
   .affichage {
-    width: 50%;
+    width: 84%;
   }
 
   h1 {
   width: 40%;
+}
+.img1 {
+  width: 50%;
+}
+
+.img2 {
+  width: 88%;
 }
 
 }
@@ -296,7 +302,7 @@ footer {
 @media screen and (max-width: 425px) {
 
 nav {
-  width: 88%;
+  width: 86%;
 }
 img {
   width: 50%;
@@ -314,6 +320,11 @@ h1 {
 .img1 {
   display: none;
 }
+
+footer {
+  width: 98%;
+}
+
 }
 @media screen and (max-width: 375px) {
 
@@ -322,7 +333,7 @@ body {
 }
 
 nav {
-  width: 78%;
+  width: 84%;
 }
 .img1 {
   display: none;
@@ -338,14 +349,19 @@ h1 {
   width: 60%;
 }
 
+footer {
+  width: 98%;
+}
+
+
 }
 @media screen and (max-width: 320px) {
 
 body {
-  margin-left: 59px;
+  margin-left: 5px;
 }
   nav {
-  width: 88%;
+  width: 83%;
 }
 img {
   width: 50%;
@@ -358,6 +374,19 @@ h1 {
   width: 79%;
   
 }
+
+.profil-button {
+  width: 50%;
+}
+
+.discon {
+  margin-left: 23px;
+}
+
+footer {
+  width: 99%;
+}
+
 
 }
 

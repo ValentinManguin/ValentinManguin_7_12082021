@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav>
-      <img src="../assets/icon-left-font-monochrome-black.png" alt="" />
+      <img class="img1" src="../assets/icon-left-font-monochrome-black.png" alt="" />
 
       <h2>
         <router-link class="redirection-comment" to="/home"> Home </router-link>
@@ -187,13 +187,13 @@ button {
 .affichage {
   border: solid;
   border-radius: 3px;
-  margin-bottom: 60px;
+  margin: auto;
   display: flex;
   flex-flow: column;
   align-items: center;
   width: 1500px;
-  margin-left: 190px;
   background-color: white;
+  margin-bottom: 60px;
 }
 
 .comment {
@@ -233,31 +233,171 @@ textarea {
 }
 
 
-@media screen and (max-width: 1721px) {
+@media screen and (max-width: 1700px) {
 
- .affichage, .comment {
-
-  width: 80%;
+.affichage{
+  width: 75%;
 }
 
 }
 
-@media screen and (max-width: 1270px) {
+@media screen and (max-width: 1024px) {
 
- .affichage {
+ .img1 {
+  width: 40%;
+}
+nav {
+  width: 101%;
+}
 
+  h1 {
+  width: 30%;
+}
+
+.affichage{
+  width: 105%;
+}
+.comment {
+  width: 90%;
+}
+
+ footer {
+   width: 105%;
+ }
+}
+
+@media screen and (max-width: 768px) {
+
+  body {
+    width: 98%;
+  }
+nav {
+  width: 97%;
+}
+
+
+  .affichage {
+    width: 103%;
+  }
+
+  h1 {
+  width: 43%;
+}
+.img1 {
+  width: 50%;
+}
+
+.img2 {
+  width: 88%;
+}
+.comment {
+  width: 90%;
+}
+footer {
+   width: 105%;
+ }
+
+}
+
+@media screen and (max-width: 425px) {
+
+nav {
+  width: 86%;
+}
+img {
+  width: 50%;
+}
+.affichage {
+  width: 96%;
+}
+
+h1 {
+  width: 60%;
+}
+.img2 {
+  width: 90%;
+}
+.img1 {
+  display: none;
+}
+
+footer {
+  width: 98%;
+}
+.comment {
+  width: 90%;
+}
+
+
+}
+@media screen and (max-width: 375px) {
+
+body {
+  margin-left: 11px;
+}
+
+nav {
+  width: 84%;
+}
+.img1 {
+  display: none;
+}
+.affichage {
+  width: 75%;
+}
+.img2 {
+  width: 88%;
+}
+
+h1 {
   width: 60%;
 }
 
+footer {
+  width: 98%;
 }
-
-@media screen and (max-width: 500px) {
-
- .affichage {
-
-  width: 40%;
+.comment {
+  width: 90%;
 }
 
 }
+@media screen and (max-width: 320px) {
+
+body {
+  margin-left: 5px;
+}
+  nav {
+  width: 83%;
+}
+.img1 {
+  display: none;
+}
+.affichage {
+  width: 96%;
+}
+
+h1 {
+  width: 79%;
+  
+}
+
+.profil-button {
+  width: 50%;
+}
+
+.discon {
+  margin-left: 23px;
+}
+
+footer {
+  width: 99%;
+}
+.comment {
+  width: 90%;
+}
+
+}
+
+
 
 </style>

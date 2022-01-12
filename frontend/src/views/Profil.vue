@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav>
-      <img src="../assets/icon-left-font-monochrome-black.png" alt="" />
+      <img class="img1" src="../assets/icon-left-font-monochrome-black.png" alt="" />
       <h2>
         <router-link class="redirection-profil" to="/home"> Home </router-link>
       </h2>
@@ -152,12 +152,159 @@ button {
 
 
 
-@media screen and (max-width: 711px) {
+@media screen and (max-width: 1700px) {
 
-  .info {
-    width: 96%;
-  }
+.affichage{
+  width: 80%;
 }
+
+}
+
+@media screen and (max-width: 1024px) {
+
+ .img1 {
+  width: 40%;
+}
+
+
+  h1 {
+  width: 30%;
+}
+
+ 
+}
+
+@media screen and (max-width: 768px) {
+
+  body {
+    width: 98%;
+  }
+
+
+
+  .affichage {
+    width: 84%;
+  }
+
+  h1 {
+  width: 40%;
+}
+.img1 {
+  width: 50%;
+}
+
+.img2 {
+  width: 88%;
+}
+
+}
+
+@media screen and (max-width: 425px) {
+
+nav {
+  width: 86%;
+}
+img {
+  width: 50%;
+}
+.affichage {
+  width: 96%;
+}
+
+h1 {
+  width: 60%;
+}
+.img2 {
+  width: 90%;
+}
+.img1 {
+  width: 70%;
+}
+
+footer {
+  width: 98%;
+}
+
+.info {
+  width: 67%;
+}
+
+}
+@media screen and (max-width: 375px) {
+
+body {
+  margin-left: 11px;
+}
+
+nav {
+  width: 84%;
+}
+.img1 {
+  width: 73%;
+}
+.affichage {
+  width: 96%;
+}
+.img2 {
+  width: 88%;
+}
+
+h1 {
+  width: 60%;
+}
+
+footer {
+  width: 98%;
+}
+
+.info {
+  width: 77%;
+}
+
+
+}
+@media screen and (max-width: 320px) {
+
+body {
+  margin-left: 5px;
+}
+  nav {
+  width: 83%;
+}
+img {
+  width: 50%;
+}
+.affichage {
+  width: 96%;
+}
+
+h1 {
+  width: 79%;
+  
+}
+
+.profil-button {
+  width: 50%;
+}
+
+.discon {
+  margin-left: 23px;
+}
+
+footer {
+  width: 99%;
+}
+.img1 {
+  width: 70%;
+}
+
+.info {
+  width: 89%;
+}
+
+}
+
+
 
 
 </style>

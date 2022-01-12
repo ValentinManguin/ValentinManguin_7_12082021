@@ -8,25 +8,25 @@ const User = require('../models/user');
 exports.createPost = (req, res, next) => {
   const userId = req.decodedToken.userId;
 
-let post;
+  let post;
   if (req.file) {
-     post = Post.build({
+    post = Post.build({
       UserId: userId,
 
       content: req.body.content,
-       imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
+      imageUrl: `${req.protocol}://${req.get('host')}/images/${req.file.filename}`
 
     });
   } else {
-     post = Post.build({
+    post = Post.build({
       UserId: userId,
 
       content: req.body.content,
-      
+
     });
   }
 
-  
+
   post.save()
     .then(() => {
       res.status(201).json({ message: 'post créée.' });
@@ -56,17 +56,28 @@ exports.modifyPost = (req, res, _) => {
 exports.deletePost = (req, res, _) => {
   Post.findOne({ where: { id: req.params.id } })
     .then((post) => {
-      console.log(post.userId);
-      console.log(req.currentUserId);
-      if (post.userId !== req.currentUserId) {
+      console.log(post.UserId);
+      console.log(req.decodedToken);
+      if (post.UserId !== req.decodedToken.userId && req.decodedToken.isAdmin == false) {
         res.status(401).json({ message: "action non autorisée" });  // si les id ne sont pas les même renvoie erreur 401
         return;
       }
+      if (post.imageUrl) {
 
-      Post.destroy({ where: { id: req.params.id } })
-        .then(() => res.status(200).json({ message: 'post supprimée.' }))
-        .catch(error => res.status(400).json({ error }));
-    })
+
+        const filename = post.imageUrl.split('/images/')[1];
+        fs.unlink(`images/${filename}`, () => {
+          Post.destroy({ where: { id: req.params.id } })
+            .then(() => res.status(200).json({ message: 'post supprimée.' }))
+            .catch(error => res.status(400).json({ error }));
+        })
+      }
+      else {
+        Post.destroy({ where: { id: req.params.id } })
+          .then(() => res.status(200).json({ message: 'post supprimée.' }))
+          .catch(error => res.status(400).json({ error }));
+      }
+    });
 };
 
 
@@ -90,7 +101,7 @@ exports.getOnePost = (req, res, _) => {
 // accéder à tous les posts
 
 exports.getAllPost = (req, res, _) => {
-  Post.findAll({ order:[['id','DESC']],include: { model: User, attributes: ['username'] } })
+  Post.findAll({ order: [['id', 'DESC']], include: { model: User, attributes: ['username'] } })
     .then((posts) => { res.status(200).json(posts); })
     .catch((error) => {
       res.status(400).json({ error });

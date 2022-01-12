@@ -68,6 +68,7 @@ export default {
                //     localStorage.setItem("userId", res.userId);
                 //    localStorage.setItem("token", res.token); 
                 //    console.log(localStorage)
+                window.alert( "Inscription validée! Maintenant connectez-vous!");
                     this.$router.push("/");
                     
                 })

@@ -75,9 +75,11 @@ export default {
 
           router.push({ path: "Home" });
         })
+        
         .catch((error) => {
           this.isInvalid = true;
           console.log(error);
+          window.alert( "Mauvais mot de passe ou adresse mail invalide");
         });
     },
   },

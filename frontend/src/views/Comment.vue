@@ -10,7 +10,7 @@
     <div class="répondre"><h1>Répondre à un post !</h1></div>
     <div class="container-site-comm">
       <div class="affichage">
-        <div v-for="post in posts" :key="post.id">
+        <div class="affichage2" v-for="post in posts" :key="post.id">
           <h3>{{ post.User.username }} :</h3>
           {{ post.content }}
         </div>
@@ -86,9 +86,11 @@ export default {
         .then(() => {
           this.content = "";
           this.getCommentsByPost();
+          alert("Commentaire publié");
         })
         .catch((error) => {
           console.log(error);
+           alert("Message trop long (255 caractères maximum)");
         });
     },
 
@@ -155,6 +157,10 @@ h3 {
   margin-bottom: 30px;
   width: 150px;
   background-color: lightgrey;
+}
+
+.affichage2 {
+  display: contents;
 }
 
 nav {
@@ -225,4 +231,33 @@ textarea {
 .imgfooter {
   height: 200px;
 }
+
+
+@media screen and (max-width: 1721px) {
+
+ .affichage, .comment {
+
+  width: 80%;
+}
+
+}
+
+@media screen and (max-width: 1270px) {
+
+ .affichage {
+
+  width: 60%;
+}
+
+}
+
+@media screen and (max-width: 500px) {
+
+ .affichage {
+
+  width: 40%;
+}
+
+}
+
 </style>

@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <nav>
-      <img src="../assets/icon-left-font-monochrome-black.png" alt="" />
+      <img class="img1" src="../assets/icon-left-font-monochrome-black.png" alt="" />
       <button class="profil-button">
         <h2>
           <router-link class="redirection-home" to="/profil">
@@ -30,9 +30,9 @@
       </div>
 
       <div v-for="post in posts" :key="post.id" class="affichage">
-        <h3>{{ post.User.username }} :</h3>
+        <h3>{{ post.User.username }}  :</h3>
         {{ post.content }}
-        <img v-if="post.imageUrl" :src="post.imageUrl" alt="" />
+        <img class="img2" v-if="post.imageUrl" :src="post.imageUrl" alt="" />
         <button
           v-on:click="deletePost(post.id)"
           v-if="isAdmin == 'true' || userId == post.UserId"
@@ -96,9 +96,12 @@ export default {
         .then(() => {
           this.content = "";
           this.getAllPost();
+          alert("Message publié");
         })
+        
         .catch((error) => {
           console.log(error);
+          alert("Message trop long (255 caractères maximum)");
         });
     },
 
@@ -120,6 +123,7 @@ export default {
 
     disconnect() {
       localStorage.clear();
+      alert("Vous êtes déconnecté");
       router.push({ path: "Login" });
     },
   },
@@ -207,12 +211,12 @@ button {
 .affichage {
   border: solid;
   border-radius: 3px;
-  margin-bottom: 60px;
+  margin: auto;
   display: flex;
   flex-flow: column;
   align-items: center;
   width: 1500px;
-  margin-left: 190px;
+  margin-bottom: 60px;
   background-color: white;
 }
 
@@ -256,32 +260,105 @@ footer {
 
 }
 
-@media screen and (max-width: 971px) {
+@media screen and (max-width: 1024px) {
+
+  img {
+    width: 50%;
+  }
+
+  h1 {
+  width: 30%;
+}
+
+ 
+}
+
+@media screen and (max-width: 768px) {
 
   body {
     width: 98%;
   }
 
+  img {
+    width: 62%;
+  }
+
   .affichage {
     width: 50%;
   }
-}
 
-@media screen and (max-width: 607px) {
-
-nav {
-  width: 90%;
-}
-img {
+  h1 {
   width: 40%;
 }
+
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 425px) {
 
-  .affichage {
-    margin-right: 60px;
-  }
+nav {
+  width: 88%;
+}
+img {
+  width: 50%;
+}
+.affichage {
+  width: 96%;
+}
+
+h1 {
+  width: 60%;
+}
+.img2 {
+  width: 90%;
+}
+.img1 {
+  display: none;
+}
+}
+@media screen and (max-width: 375px) {
+
+body {
+  margin-left: 11px;
+}
+
+nav {
+  width: 78%;
+}
+.img1 {
+  display: none;
+}
+.affichage {
+  width: 96%;
+}
+.img2 {
+  width: 88%;
+}
+
+h1 {
+  width: 60%;
+}
+
+}
+@media screen and (max-width: 320px) {
+
+body {
+  margin-left: 59px;
+}
+  nav {
+  width: 88%;
+}
+img {
+  width: 50%;
+}
+.affichage {
+  width: 96%;
+}
+
+h1 {
+  width: 79%;
+  
+}
+
 }
 
 

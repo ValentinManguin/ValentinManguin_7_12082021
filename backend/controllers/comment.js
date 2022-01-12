@@ -30,7 +30,7 @@ exports.createComment = (req, res, next) => {
       .then((comment) => {
         console.log(comment.userId);
         console.log(req.currentUserId);
-        if (comment.userId !== req.currentUserId) {
+        if (comment.UserId !== req.decodedToken.userId && req.decodedToken.isAdmin == false) {
           res.status(401).json({ message: "action non autorisée" });  
           return ;
         }

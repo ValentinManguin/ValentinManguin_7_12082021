@@ -149,4 +149,15 @@ button {
 .imgfooter {
   height: 200px;
 }
+
+
+
+@media screen and (max-width: 711px) {
+
+  .info {
+    width: 96%;
+  }
+}
+
+
 </style>

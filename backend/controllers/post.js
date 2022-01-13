@@ -37,14 +37,6 @@ exports.createPost = (req, res, next) => {
 };
 
 
-// modifier un post
-
-exports.modifyPost = (req, res, _) => {
-  Post.updateOne({ _id: req.params.id })
-    .then(() => res.status(200).json({ message: 'post modifiée.' }))
-    .catch(error => res.status(400).json({ error }));
-
-};
 
 
 

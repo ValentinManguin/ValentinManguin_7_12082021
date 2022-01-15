@@ -5,10 +5,10 @@ const db = require("../middleware/db-config");
 module.exports = db.define('User', {
 
     email: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING(200),
         unique: true,
         allowNull: false,
-        isEmail: true
+        
     },
     password: {
         type: DataTypes.STRING(100),

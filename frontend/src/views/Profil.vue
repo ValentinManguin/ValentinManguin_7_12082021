@@ -12,7 +12,7 @@
 
       <div class="info">
         <h2>Bonjour {{ this.User.username }}</h2>
-        <h2>email: {{ this.User.email }}</h2>
+        
 
         <button class="suppr-compte" v-on:click="deleteAccount">
           Supprimer votre compte
